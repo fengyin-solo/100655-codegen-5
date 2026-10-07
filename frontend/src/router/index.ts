@@ -19,6 +19,9 @@ const Valve = () => import('@/views/valve/index.vue')
 const Chem = () => import('@/views/chem/index.vue')
 const Equipmaint = () => import('@/views/equipmaint/index.vue')
 const Shift = () => import('@/views/shift/index.vue')
+const Watertruck = () => import('@/views/watertruck/index.vue')
+const WatertruckTrip = () => import('@/views/watertruck/detail.vue')
+const Outage = () => import('@/views/outage/index.vue')
 
 const router = createRouter({
   history: createWebHistory(),
@@ -42,6 +45,9 @@ const router = createRouter({
     { path: '/chem', name: 'chem', component: Chem },
     { path: '/equipmaint', name: 'equipmaint', component: Equipmaint },
     { path: '/shift', name: 'shift', component: Shift },
+    { path: '/watertruck', name: 'watertruck', component: Watertruck },
+    { path: '/watertruck/trip/:id', name: 'watertruck-trip', component: WatertruckTrip },
+    { path: '/outage', name: 'outage', component: Outage },
   ],
 })
 
