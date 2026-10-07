@@ -41,7 +41,12 @@ export function listRows(key: string): EntryRow[] {
 }
 
 export function saveRows(key: string, rows: EntryRow[]): void {
-  const next = { ...allRows(), [key]: rows }
+  saveMulti({ [key]: rows })
+}
+
+// 多模块一次落库：派车这类要同时改两张台账的动作走这里，要么都写上要么都不写，失败可直接重试。
+export function saveMulti(entries: Record<string, EntryRow[]>): void {
+  const next = { ...allRows(), ...entries }
   cache = next
   if (typeof window !== 'undefined' && window.localStorage) {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next))
